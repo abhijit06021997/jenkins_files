@@ -16,16 +16,16 @@ pipeline {
 //                   echo " See full results on https://localhost.sonarqube.com/My_Projects"
 //               }
 //         }
-        stage("Sonar-Scan") {
-            steps {
-                withCredentials([string(credentialsId: 'idfs', variable: 'SONAR_TOKEN')]) {
-                sh '''
-                export PATH=$PATH:/opt/sonar-scanner/bin
-                sonar-scanner -Dsonar.login=$SONAR_TOKEN -Dsonar.projectKey=idfsbank -Dsonar.organization=atulyw
-                '''
-             }
-          }  
-        }
+        // stage("Sonar-Scan") {
+        //     steps {
+        //         withCredentials([string(credentialsId: 'idfs', variable: 'SONAR_TOKEN')]) {
+        //         sh '''
+        //         export PATH=$PATH:/opt/sonar-scanner/bin
+        //         sonar-scanner -Dsonar.login=$SONAR_TOKEN -Dsonar.projectKey=idfsbank -Dsonar.organization=atulyw
+        //         '''
+        //      }
+        //   }  
+        // }
         stage('MavenCompile') {
             steps {
                 sh 'mvn compile'
